@@ -14,8 +14,6 @@
   import VideoList from './components/VideoList';
   import VideoDetail from './components/VideoDetail';
 
-  const API_KEY = 'AIzaSyBG0DfWKYMNOL-utzENSOUMVAmPQkSF0iQ';
-
   export default {
     name: 'App',
     components: {
@@ -30,7 +28,7 @@
       onTermChange(searchTerm) {
         axios.get('https://www.googleapis.com/youtube/v3/search', {
           params: {
-            key: API_KEY,
+            key: process.env.API_KEY,
             type: 'video',
             part: 'snippet',
             q: searchTerm

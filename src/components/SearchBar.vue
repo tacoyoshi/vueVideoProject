@@ -1,15 +1,24 @@
 <template>
   <div>
-    <input @input="onInput" />
+    <input @input ="setSearchTerm" />
+    <button @click="onInput">Search</button>
   </div>
 </template>
 
 <script>
   export default {
     name: 'SearchBar',
+    data() {
+      return {
+        searchTerm: ''
+      };
+    },
     methods: {
-      onInput: function(event) {
-        this.$emit('termChange', event.target.value);
+      onInput: function() {
+        this.$emit('termChange', this.searchTerm);
+      },
+      setSearchTerm(event) {
+        this.searchTerm = event.target.value;
       }
     }
   };
@@ -22,5 +31,9 @@
   div {
     text-align: center;
     margin: 20px;
+    display: flex;
+  }
+  button {
+    margin-left: 10px;
   }
 </style>
